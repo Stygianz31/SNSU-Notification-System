@@ -122,7 +122,7 @@ const Sidebar: React.FC = () => {
                 <img 
                   src={user.profilePicture.startsWith('http') 
                     ? user.profilePicture 
-                    : `http://localhost:5000/${user.profilePicture}`
+                    : `${import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000'}/${user.profilePicture}`
                   } 
                   alt="Profile"
                   style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
