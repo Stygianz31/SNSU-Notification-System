@@ -1,6 +1,8 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { createServer } from 'http';
@@ -22,8 +24,6 @@ import Class from './models/Class';
 User.hasMany(Message, { foreignKey: 'senderId', as: 'sentMessages', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 User.hasMany(Message, { foreignKey: 'recipientId', as: 'receivedMessages', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 User.hasMany(Class, { foreignKey: 'teacherId', as: 'classes', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
-
-dotenv.config();
 
 const app = express();
 const httpServer = createServer(app);

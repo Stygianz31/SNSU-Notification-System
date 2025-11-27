@@ -1,9 +1,9 @@
 import { Sequelize } from 'sequelize';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const dbType = process.env.DB_TYPE || 'sqlite';
+
+console.log('DB_TYPE from env:', process.env.DB_TYPE);
+console.log('NODE_ENV from env:', process.env.NODE_ENV);
 
 let sequelize: Sequelize;
 
