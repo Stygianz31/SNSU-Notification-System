@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
+import compression from 'compression';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -35,6 +36,7 @@ const io = new SocketIOServer(httpServer, {
   }
 });
 
+app.use(compression());
 app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' }
 }));
