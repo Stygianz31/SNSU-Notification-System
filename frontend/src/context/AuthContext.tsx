@@ -13,6 +13,7 @@ interface User {
   department?: string;
   course?: string;
   yearLevel?: number;
+  bio?: string;
 }
 
 interface AuthContextType {
