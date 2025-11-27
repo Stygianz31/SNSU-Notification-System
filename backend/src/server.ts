@@ -58,6 +58,19 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });
 
+// Serve frontend static files in production
+if (process.env.NODE_ENV === 'production') {
+  const publicPath = path.join(__dirname, '..', 'public');
+  app.use(express.static(publicPath));
+  
+  // Handle SPA routing - serve index.html for all non-API routes
+  app.get('*', (req, res) => {
+    if (!req.path.startsWith('/api') && !req.path.startsWith('/uploads')) {
+      res.sendFile(path.join(publicPath, 'index.html'));
+    }
+  });
+}
+
 initializeChatHandlers(io);
 
 const initializeDatabase = async () => {
