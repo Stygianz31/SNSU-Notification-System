@@ -1,0 +1,6 @@
+#run nis terminal dri
+./ONE-CLICK-START.bat
+
+# or sa cmd
+cd Downloads\hyst\ionic-school-system-20251116T234856Z-1-001\ionic-school-NotificationSystem
+./ONE-CLICK-START.bat

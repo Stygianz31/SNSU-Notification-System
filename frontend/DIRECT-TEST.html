@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Server Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        h1 { color: #fff; }
+        .success { color: #2dd36f; font-size: 24px; font-weight: bold; }
+        .test-item { margin: 20px 0; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 5px; }
+        button {
+            background: #3880ff;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover { background: #2d6fe8; }
+        .result { margin-top: 10px; font-family: monospace; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Server Connectivity Test</h1>
+        <p class="success">✅ This page loaded successfully!</p>
+        <p>If you can see this, your browser CAN access localhost:8100</p>
+
+        <div class="test-item">
+            <h3>Test 1: Check Backend API</h3>
+            <button onclick="testBackend()">Test Backend (Port 5000)</button>
+            <div id="backend-result" class="result"></div>
+        </div>
+
+        <div class="test-item">
+            <h3>Test 2: Load React App</h3>
+            <a href="/"><button>Go to React App</button></a>
+            <p><small>Click to try loading the main React application</small></p>
+        </div>
+
+        <div class="test-item">
+            <h3>Test 3: Browser Info</h3>
+            <div class="result">
+                <p>User Agent: <span id="ua"></span></p>
+                <p>Current URL: <span id="url"></span></p>
+                <p>Protocol: <span id="protocol"></span></p>
+                <p>Host: <span id="host"></span></p>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <h3>📋 Troubleshooting Steps</h3>
+            <ol>
+                <li>✅ Server is working (you can see this page)</li>
+                <li>Test if backend responds (click Test Backend button)</li>
+                <li>Try loading React app (click Go to React App button)</li>
+                <li>Check browser console (F12) for errors</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Display browser info
+        document.getElementById('ua').textContent = navigator.userAgent;
+        document.getElementById('url').textContent = window.location.href;
+        document.getElementById('protocol').textContent = window.location.protocol;
+        document.getElementById('host').textContent = window.location.host;
+
+        async function testBackend() {
+            const result = document.getElementById('backend-result');
+            result.textContent = 'Testing...';
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/health');
+                const data = await response.json();
+                result.innerHTML = `<span style="color: #2dd36f;">✅ Backend responding!</span><br>Response: ${JSON.stringify(data, null, 2)}`;
+            } catch (error) {
+                result.innerHTML = `<span style="color: #ff4961;">❌ Backend not responding</span><br>Error: ${error.message}`;
+            }
+        }
+
+        console.log('Direct test page loaded successfully at', new Date().toLocaleString());
+    </script>
+</body>
+</html>

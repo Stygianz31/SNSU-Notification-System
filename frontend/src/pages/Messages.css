@@ -1,0 +1,271 @@
+.messages-content {
+  --background: #f0f2f5;
+}
+
+.messages-container {
+  padding: 16px;
+  padding-bottom: 80px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.date-divider {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.date-divider span {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.message-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.message-wrapper.own-message {
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.avatar-placeholder-small {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+}
+
+.message-bubble {
+  max-width: 70%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  position: relative;
+  animation: messageSlideIn 0.2s ease-out;
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.other-message .message-bubble {
+  background: white;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.own-message .message-bubble {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 1px 2px rgba(102, 126, 234, 0.3);
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.message-sender {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ion-color-primary);
+}
+
+.message-role-badge {
+  font-size: 9px;
+  padding: 2px 6px;
+  text-transform: uppercase;
+}
+
+.message-content {
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0 0 4px 0;
+  word-wrap: break-word;
+  color: #000000;
+}
+
+.own-message .message-content {
+  color: white !important;
+}
+
+.other-message .message-content {
+  color: #000000 !important;
+}
+
+.message-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.message-time {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.message-actions {
+  display: flex;
+  gap: 2px;
+}
+
+.reply-button,
+.delete-button {
+  --padding-start: 4px;
+  --padding-end: 4px;
+  height: 20px;
+  font-size: 14px;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.reply-button:hover,
+.delete-button:hover {
+  opacity: 1;
+}
+
+.own-message .reply-button,
+.own-message .delete-button {
+  color: white;
+}
+
+.other-message .reply-button,
+.other-message .delete-button {
+  color: var(--ion-color-primary);
+}
+
+.reply-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #e3f2fd;
+  border-left: 3px solid var(--ion-color-primary);
+  margin-bottom: 8px;
+}
+
+.reply-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ion-color-primary);
+  font-size: 14px;
+}
+
+.reply-info ion-icon {
+  font-size: 18px;
+}
+
+.reply-info strong {
+  font-weight: 600;
+}
+
+.message-input-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  z-index: 10;
+}
+
+.message-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.message-input-item {
+  flex: 1;
+  --background: #f5f5f5;
+  --color: #000000 !important;
+  --border-radius: 24px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  border-radius: 24px;
+}
+
+.message-input-item ion-input {
+  --color: #000000 !important;
+  color: #000000 !important;
+}
+
+.message-input-item ion-input input {
+  color: #000000 !important;
+}
+
+.send-button {
+  --border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--ion-color-medium);
+}
+
+.empty-state ion-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+  opacity: 0.3;
+}
+
+.empty-state h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 12px 0;
+}
+
+.empty-state p {
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .messages-container {
+    padding: 12px;
+    padding-bottom: 70px;
+  }
+
+  .message-bubble {
+    max-width: 80%;
+  }
+}

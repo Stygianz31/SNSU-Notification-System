@@ -1,0 +1,8 @@
+// Jest setup file for tests
+process.env.NODE_ENV = 'test';
+process.env.JWT_SECRET = 'test-secret-key';
+process.env.DB_TYPE = 'sqlite';
+process.env.DB_STORAGE = ':memory:';
+
+// Set longer timeout for database operations
+jest.setTimeout(10000);
