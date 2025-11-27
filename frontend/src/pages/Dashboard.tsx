@@ -155,7 +155,7 @@ const Dashboard: React.FC = () => {
           <IonGrid>
             <IonRow>
               <IonCol size="4">
-                <IonCard className="stat-card" button onClick={() => history.push('/manage-users')}>
+                <IonCard className="stat-card" button onClick={() => history.push(user?.role === 'admin' ? '/manage-users' : '/messages')}>
                   <IonCardContent className="ion-text-center">
                     <IonIcon icon={peopleOutline} size="large" color="primary" />
                     <h3>{users.teachers.length}</h3>
@@ -164,7 +164,7 @@ const Dashboard: React.FC = () => {
                 </IonCard>
               </IonCol>
               <IonCol size="4">
-                <IonCard className="stat-card" button onClick={() => history.push('/manage-users')}>
+                <IonCard className="stat-card" button onClick={() => history.push(user?.role === 'admin' ? '/manage-users' : user?.role === 'teacher' ? '/students' : '/messages')}>
                   <IonCardContent className="ion-text-center">
                     <IonIcon icon={peopleOutline} size="large" color="success" />
                     <h3>{users.students.length}</h3>
@@ -173,7 +173,7 @@ const Dashboard: React.FC = () => {
                 </IonCard>
               </IonCol>
               <IonCol size="4">
-                <IonCard className="stat-card">
+                <IonCard className="stat-card" button onClick={() => history.push('/notifications')}>
                   <IonCardContent className="ion-text-center">
                     <IonIcon icon={notificationsOutline} size="large" color="warning" />
                     <h3>{notifications.length}</h3>
