@@ -29,7 +29,20 @@ COPY --from=frontend-build /frontend/dist ./public
 RUN mkdir -p uploads
 
 # Expose port
-EXPOSE 5000
+EXPOSE 8080
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=8080
+ENV DB_TYPE=postgres
+ENV DB_HOST=postgres.railway.internal
+ENV DB_PORT=5432
+ENV DB_NAME=railway
+ENV DB_USER=postgres
+ENV DB_PASSWORD=urdMPVCJSMqnZhnNJUNVOfhlVfRuDovY
+ENV JWT_SECRET=snsu-secret-key-2024-production
+ENV JWT_EXPIRES_IN=7d
+ENV CORS_ORIGIN=*
 
 # Start the server
 CMD ["node", "dist/server.js"]
